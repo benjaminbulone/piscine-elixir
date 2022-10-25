@@ -14,14 +14,23 @@ defmodule ApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", ApiWeb do
-    pipe_through :api
+  # scope "/", ApiWeb do
+  #   pipe_through :api
 
-    get "/", PageController, :index
-  end
+  #   get "/", PageController, :index
+  # end
 
-  resources "/users", UserController, except: [:new, :edit]
-  resources "/tasks", UserController, except: [:new, :edit]
+  # scope "/users", ApiWeb do
+  #   pipe_through :browser
+
+  #   get "/", UserController, :getUsers
+  # end
+
+
+  resources "api/users", ApiWeb.UserController, except: [:new, :edit]
+  resources "api/clocks", ClockController, except: [:new, :edit]
+  resources "api/workingtime", WorkingTimeController, except: [:new, :edit]
+
 
 
   # Other scopes may use custom stacks.
