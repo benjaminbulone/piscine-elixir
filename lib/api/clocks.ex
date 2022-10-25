@@ -21,6 +21,7 @@ defmodule Api.Clocks do
     query = from(c in Clock, where: c.user_id == ^userID)
     Repo.all(query)
   end
+  
 
   @doc """
   Gets a single clock.
